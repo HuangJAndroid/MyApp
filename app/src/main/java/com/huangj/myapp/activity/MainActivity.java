@@ -1,12 +1,11 @@
 package com.huangj.myapp.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,7 +25,6 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private Toolbar mToolbar;
     private TextView main_tv_login,main_tv_login2;
     private SlidingMenu mSlidingMenu;
     private RadioGroup radioGroup;
@@ -47,9 +45,8 @@ public class MainActivity extends AppCompatActivity {
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //不让虚拟键遮盖布局
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        mToolbar = (Toolbar) findViewById(R.id.toolBar);
         //状态栏颜色设置
-        StatusBarCompat.compat(MainActivity.this,getResources().getColor(R.color.colorMain));
+        StatusBarCompat.compat(MainActivity.this, getResources().getColor(R.color.colorMain));
 
         main_tv_login = (TextView) findViewById(R.id.main_tv_login);
         main_tv_login2 = (TextView) findViewById(R.id.main_tv_login2);

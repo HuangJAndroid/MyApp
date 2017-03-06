@@ -25,7 +25,14 @@ public class SlidingActivity extends AppCompatActivity {
 
         // Grab the widget
         mSlideSideMenu = (SlideSideMenuTransitionLayout)findViewById(R.id.slide_side_menu);
-
+        //数值越大侧滑布局宽度越小
+//        mSlideSideMenu.setContentPeekDistancePercent(0.8f);
+        //数值越小内容布局比例越小
+//        mSlideSideMenu.setContentPeekSizePercent(0.4f);
+        //侧滑动画的效果
+//        mSlideSideMenu.setMenuSizePercent(1.9f);
+        //关闭侧滑的时间
+//        mSlideSideMenu.setAnimationDuration(6000);
         // Setup the toolbar
         mToolbar = (Toolbar) findViewById(R.id.base_toolbar);
         setSupportActionBar(mToolbar);
