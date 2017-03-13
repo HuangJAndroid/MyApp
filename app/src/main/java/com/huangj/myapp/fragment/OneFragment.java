@@ -17,6 +17,7 @@ import com.huangj.myapp.R;
 import com.huangj.myapp.activity.MyPreferenceActivity;
 import com.huangj.myapp.activity.ScratchActivity;
 import com.huangj.myapp.activity.SlidingActivity;
+import com.huangj.myapp.activity.StellarMapActivity;
 import com.huangj.myapp.activity.WebViewActivity;
 import com.huangj.myapp.activity.ZhuanPanActivity;
 
@@ -44,6 +45,8 @@ public class OneFragment extends Fragment {
     private Button one_btn2;
 @ViewInject(R.id.one_btn3)
 private Button one_btn3;
+    @ViewInject(R.id.one_btn11)
+    private Button one_btn11;
     public OneFragment() {
         // Required empty public constructor
     }
@@ -110,6 +113,12 @@ private Button one_btn3;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ScratchActivity.class));
+            }
+        });
+        one_btn11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), StellarMapActivity.class));
             }
         });
         return view;

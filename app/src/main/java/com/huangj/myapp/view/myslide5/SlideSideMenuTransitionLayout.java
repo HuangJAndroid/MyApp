@@ -1,4 +1,4 @@
-package com.huangj.myapp.view;
+package com.huangj.myapp.view.myslide5;
 
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;

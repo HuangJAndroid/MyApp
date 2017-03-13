@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.huangj.myapp.R;
-import com.huangj.myapp.view.SlideSideMenuTransitionLayout;
+import com.huangj.myapp.view.myslide5.SlideSideMenuTransitionLayout;
 
 import org.xutils.x;
 

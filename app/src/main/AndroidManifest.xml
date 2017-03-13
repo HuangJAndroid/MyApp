@@ -21,8 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.ScratchActivity">
+        <activity android:name=".activity.ScratchActivity">
         </activity>
         <activity android:name=".activity.ZhuanPanActivity">
         </activity>
@@ -31,6 +30,8 @@
         <activity android:name=".activity.WebViewActivity">
         </activity>
         <activity android:name=".activity.SlidingActivity">
+        </activity>
+        <activity android:name=".activity.StellarMapActivity">
         </activity>
     </application>
 

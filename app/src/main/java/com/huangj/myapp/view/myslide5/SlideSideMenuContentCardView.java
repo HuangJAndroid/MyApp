@@ -1,4 +1,4 @@
-package com.huangj.myapp.view;
+package com.huangj.myapp.view.myslide5;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
