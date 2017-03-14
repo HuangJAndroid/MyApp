@@ -29,7 +29,7 @@
         android:id="@+id/zhuanpan_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <com.huangj.myapp.utils.ZhuanPanView
+    <com.huangj.myapp.view.ZhuanPanView
         android:id="@+id/myview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

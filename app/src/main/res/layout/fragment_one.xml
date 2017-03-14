@@ -77,7 +77,7 @@
         android:layout_below="@id/one_btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="大转盘"
+        android:text="随机位置"
         android:textSize="15sp"
         android:textColor="@color/colorMain"/>
 </RelativeLayout>

@@ -1,6 +1,5 @@
 package com.huangj.myapp.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huangj.myapp.R;
-import com.huangj.myapp.utils.ZhuanPanView;
+import com.huangj.myapp.view.ZhuanPanView;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;

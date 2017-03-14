@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class StellarMapActivity extends AppCompatActivity {
+public class StellarMapActivity extends AppCompatActivity{
+
     @ViewInject(R.id.stellarMap)
     StellarMap stellarMap;
     List<String> mData = new ArrayList<>();
@@ -34,11 +35,10 @@ public class StellarMapActivity extends AppCompatActivity {
         }
         stellarMap.setAdapter(new MyAdapter());
         //setRegularity的两个参数之必须等于getCount(),这里也就是15
-        stellarMap.setRegularity(18, 16);
+        stellarMap.setRegularity(10, 16);
 
         //arg0: 从哪组动画开始执行
         stellarMap.setGroup(0, true);
-
     }
     class MyAdapter implements StellarMap.Adapter {
 

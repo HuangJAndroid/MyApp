@@ -1,4 +1,4 @@
-package com.huangj.myapp.utils;
+package com.huangj.myapp.view;
 
 
 import android.content.Context;
