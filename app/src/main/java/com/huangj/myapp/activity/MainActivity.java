@@ -19,7 +19,6 @@ import com.huangj.myapp.fragment.HomeFragment;
 import com.huangj.myapp.fragment.OneFragment;
 import com.huangj.myapp.fragment.ThreeFragment;
 import com.huangj.myapp.fragment.TwoFragment;
-import com.huangj.myapp.utils.StatusBarCompat;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         //不让虚拟键遮盖布局
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         //状态栏颜色设置
-        StatusBarCompat.compat(MainActivity.this, getResources().getColor(R.color.colorMain));
+//        StatusBarCompat.compat(MainActivity.this, getResources().getColor(R.color.colorMain));
 
         main_tv_login = (TextView) findViewById(R.id.main_tv_login);
         main_tv_login2 = (TextView) findViewById(R.id.main_tv_login2);
