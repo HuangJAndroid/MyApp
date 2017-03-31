@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.huangj.myapp.R;
+import com.huangj.myapp.activity.IrregularityActivity;
 import com.huangj.myapp.activity.MyPreferenceActivity;
 import com.huangj.myapp.activity.ScratchActivity;
 import com.huangj.myapp.activity.SlidingActivity;
@@ -47,6 +48,9 @@ public class OneFragment extends Fragment {
 private Button one_btn3;
     @ViewInject(R.id.one_btn11)
     private Button one_btn11;
+    @ViewInject(R.id.one_btn12)
+    private Button one_btn12;
+
     public OneFragment() {
         // Required empty public constructor
     }
@@ -119,6 +123,13 @@ private Button one_btn3;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), StellarMapActivity.class));
+            }
+        });
+
+        one_btn12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), IrregularityActivity.class));
             }
         });
         return view;

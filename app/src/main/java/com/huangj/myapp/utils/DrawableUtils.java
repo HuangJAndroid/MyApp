@@ -34,7 +34,7 @@ public class DrawableUtils {
     }
 
     public static int dip2px(int dip) {
-        final float scale = MyApplication.getContext().getResources().getDisplayMetrics().density;
+        final float scale = UiUtils.getContext().getResources().getDisplayMetrics().density;
         return (int) (dip * scale + 0.5f);
     }
 }

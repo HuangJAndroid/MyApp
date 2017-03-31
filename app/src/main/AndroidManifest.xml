@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".activity.StellarMapActivity">
         </activity>
+        <activity android:name=".activity.IrregularityActivity">
+        </activity>
     </application>
 
 </manifest>

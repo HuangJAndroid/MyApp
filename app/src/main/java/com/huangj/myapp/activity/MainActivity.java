@@ -8,8 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +19,11 @@ import com.huangj.myapp.fragment.HomeFragment;
 import com.huangj.myapp.fragment.OneFragment;
 import com.huangj.myapp.fragment.ThreeFragment;
 import com.huangj.myapp.fragment.TwoFragment;
+import com.huangj.myapp.view.lazylayout.LoadingPage;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,23 +38,87 @@ public class MainActivity extends AppCompatActivity {
     private TwoFragment twoFragment;
     private ThreeFragment threeFragment;
 
+    private List<String> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
+
+        LoadingPage loadingPage = new LoadingPage(this) {
+            @Override
+            public View createSuccessView() {
+                return MainActivity.this.createSuccessView();
+            }
+
+            @Override
+            protected LoadResult load() {
+                return MainActivity.this.load();
+            }
+        };
+
+        loadingPage.show();
+        setContentView(loadingPage);
+
 
         //不让状态栏被占用
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //不让虚拟键遮盖布局
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         //状态栏颜色设置
 //        StatusBarCompat.compat(MainActivity.this, getResources().getColor(R.color.colorMain));
 
-        main_tv_login = (TextView) findViewById(R.id.main_tv_login);
-        main_tv_login2 = (TextView) findViewById(R.id.main_tv_login2);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+
+
+    }
+
+    public void hideFragment(FragmentTransaction transaction){
+        if (homeFragment!=null){
+            transaction.hide(homeFragment);
+        }
+        if (oneFragment!=null){
+            transaction.hide(oneFragment);
+        }
+        if (twoFragment!=null){
+            transaction.hide(twoFragment);
+        }
+        if (threeFragment!=null){
+            transaction.hide(threeFragment);
+        }
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        // TODO Auto-generated method stub
+
+        super.onAttachedToWindow();
+        }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if(keyCode == KeyEvent.KEYCODE_HOME) {
+             //不做任何操作
+             }if (keyCode == KeyEvent.KEYCODE_MENU) {
+
+            }
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            startActivity(intent);
+            return true;
+        }
+        return true;
+    }
+
+
+    public View createSuccessView(){
+        View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_main, null);
+        main_tv_login = (TextView) view.findViewById(R.id.main_tv_login);
+        main_tv_login2 = (TextView) view.findViewById(R.id.main_tv_login2);
+        mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawerLayout);
+        radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
 
         mFragmentManager = getSupportFragmentManager();
         if (homeFragment==null){
@@ -128,45 +196,18 @@ public class MainActivity extends AppCompatActivity {
                 transaction.commit();
             }
         });
+        return view;
     }
 
-    public void hideFragment(FragmentTransaction transaction){
-        if (homeFragment!=null){
-            transaction.hide(homeFragment);
+
+    public LoadingPage.LoadResult load(){
+        for (int i = 0; i < 4; i++) {
+            data.add(""+i+i);
         }
-        if (oneFragment!=null){
-            transaction.hide(oneFragment);
-        }
-        if (twoFragment!=null){
-            transaction.hide(twoFragment);
-        }
-        if (threeFragment!=null){
-            transaction.hide(threeFragment);
+        if(data.size() == 0){
+            return LoadingPage.LoadResult.error;
+        }else{
+            return LoadingPage.LoadResult.success;
         }
     }
-
-    @Override
-    public void onAttachedToWindow() {
-        // TODO Auto-generated method stub
-
-        super.onAttachedToWindow();
-        }
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO Auto-generated method stub
-        if(keyCode == KeyEvent.KEYCODE_HOME) {
-             //不做任何操作
-             }if (keyCode == KeyEvent.KEYCODE_MENU) {
-
-            }
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            startActivity(intent);
-            return true;
-        }
-        return true;
-    }
-
 }
