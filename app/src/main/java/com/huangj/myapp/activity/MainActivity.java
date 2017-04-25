@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 return MainActivity.this.load();
             }
         };
-
         loadingPage.show();
         setContentView(loadingPage);
 

@@ -59,11 +59,102 @@
 #混淆前后的映射
 -printmapping mapping.txt
 
+#如果引用了v4或者v7包
+-dontwarn android.support.**
+
+-keep public class * extends android.view.View {
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+    public void set*(...);
+}
+
+#保持 native 方法不被混淆
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+#保持自定义控件类不被混淆
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+#保持自定义控件类不被混淆
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+#保持自定义控件类不被混淆
+-keepclassmembers class * extends android.app.Activity {
+   public void *(android.view.View);
+}
+
+#保持 Parcelable 不被混淆
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+#保持 Serializable 不被混淆
+-keepnames class * implements java.io.Serializable
+#保持 Serializable 不被混淆并且enum 类也不被混淆
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    !private <fields>;
+    !private <methods>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+#保持枚举 enum 类不被混淆 如果混淆报错，建议直接使用上面的 -keepclassmembers class * implements java.io.Serializable即可
+-keepclassmembers enum * {
+  public static **[] values();
+  public static ** valueOf(java.lang.String);
+}
+-keepclassmembers class * {
+    public void *ButtonClicked(android.view.View);
+}
+
+#不混淆资源类
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
 #####################记录生成的日志数据，gradle build时 在本项目根目录输出-end################
 ##############混淆保护自己项目的部分代码以及引用的第三方jar包library，android studio默认已添加到打包脚本中，不用重复添加######
 
 #XUtils混淆
 -keep class com.lidroid.** { *; }
+-keepattributes Signature,*Annotation*
+-keep public class org.xutils.** {
+    public protected *;
+}
+-keep public interface org.xutils.** {
+    public protected *;
+}
+-keepclassmembers class * extends org.xutils.** {
+    public protected *;
+}
+-keepclassmembers @org.xutils.db.annotation.* class * {*;}
+-keepclassmembers @org.xutils.http.annotation.* class * {*;}
+-keepclassmembers class * {
+    @org.xutils.view.annotation.Event <methods>;
+}
+
+#支付宝
+-dontwarn android.net.**
+-keep class android.net.SSLCertificateSocketFactory{*;}
+
+#pulltorefresh
+-dontwarn com.handmark.pulltorefresh.library.**
+-keep class com.handmark.pulltorefresh.library.** { *;}
+-dontwarn com.handmark.pulltorefresh.library.extras.**
+-keep class com.handmark.pulltorefresh.library.extras.** { *;}
+-dontwarn com.handmark.pulltorefresh.library.internal.**
+-keep class com.handmark.pulltorefresh.library.internal.** { *;}
+
+#gson网络请求javabean为null
+-keep public class com.meisheng.manmannovel.bean.** { private *; }
 
 #org.apache.http.legacy.jar混淆
 -keep class org.apache.**{*;}
@@ -133,67 +224,7 @@
 -keep class com.tencent.android.tpush.**  {* ;}
 -keep class com.tencent.mid.**  {* ;}
 
-#如果引用了v4或者v7包
--dontwarn android.support.**
 
--keep public class * extends android.view.View {
-    public <init>(android.content.Context);
-    public <init>(android.content.Context, android.util.AttributeSet);
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-    public void set*(...);
-}
-
-#保持 native 方法不被混淆
--keepclasseswithmembernames class * {
-    native <methods>;
-}
-
-#保持自定义控件类不被混淆
--keepclasseswithmembers class * {
-    public <init>(android.content.Context, android.util.AttributeSet);
-}
-#保持自定义控件类不被混淆
--keepclasseswithmembers class * {
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-}
-#保持自定义控件类不被混淆
--keepclassmembers class * extends android.app.Activity {
-   public void *(android.view.View);
-}
-
-#保持 Parcelable 不被混淆
--keep class * implements android.os.Parcelable {
-  public static final android.os.Parcelable$Creator *;
-}
-
-#保持 Serializable 不被混淆
--keepnames class * implements java.io.Serializable
-#保持 Serializable 不被混淆并且enum 类也不被混淆
--keepclassmembers class * implements java.io.Serializable {
-    static final long serialVersionUID;
-    private static final java.io.ObjectStreamField[] serialPersistentFields;
-    !static !transient <fields>;
-    !private <fields>;
-    !private <methods>;
-    private void writeObject(java.io.ObjectOutputStream);
-    private void readObject(java.io.ObjectInputStream);
-    java.lang.Object writeReplace();
-    java.lang.Object readResolve();
-}
-
-#保持枚举 enum 类不被混淆 如果混淆报错，建议直接使用上面的 -keepclassmembers class * implements java.io.Serializable即可
--keepclassmembers enum * {
-  public static **[] values();
-  public static ** valueOf(java.lang.String);
-}
--keepclassmembers class * {
-    public void *ButtonClicked(android.view.View);
-}
-
-#不混淆资源类
--keepclassmembers class **.R$* {
-    public static <fields>;
-}
 #避免混淆泛型 如果混淆报错建议关掉
 #–keepattributes Signature
 #移除log 测试了下没有用还是建议自己定义一个开关控制是否输出日志

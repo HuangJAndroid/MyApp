@@ -98,6 +98,7 @@ public class ZhuanPanView extends View {
 
         //画箭头
 
+        canvas.save();
         canvas.restore();
         mPaint.setStyle(Paint.Style.FILL);// 实心
         mPaint.setStrokeWidth(8);//

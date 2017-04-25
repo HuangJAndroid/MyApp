@@ -12,9 +12,9 @@ import com.huangj.myapp.utils.UiUtils;
 
 
 /***
- * ´´½¨ÁË×Ô¶¨ÒåÖ¡²¼¾Ö °ÑbaseFragment Ò»²¿·Ö´úÂë ³éÈ¡µ½Õâ¸öÀàÖĞ
+ * åˆ›å»ºäº†è‡ªå®šä¹‰å¸§å¸ƒå±€ æŠŠbaseFragment ä¸€éƒ¨åˆ†ä»£ç  æŠ½å–åˆ°è¿™ä¸ªç±»ä¸­
  * @author itcast
- * 
+ *
  */
 public abstract class LoadingPage extends FrameLayout {
 
@@ -25,10 +25,10 @@ public abstract class LoadingPage extends FrameLayout {
 	public static final int STATE_SUCCESS = 4;
 	public int state = STATE_UNKOWN;
 
-	private View loadingView;// ¼ÓÔØÖĞµÄ½çÃæ
-	private View errorView;// ´íÎó½çÃæ
-	private View emptyView;// ¿Õ½çÃæ
-	private View successView;// ¼ÓÔØ³É¹¦µÄ½çÃæ
+	private View loadingView;// åŠ è½½ä¸­çš„ç•Œé¢
+	private View errorView;// é”™è¯¯ç•Œé¢
+	private View emptyView;// ç©ºç•Œé¢
+	private View successView;// åŠ è½½æˆåŠŸçš„ç•Œé¢
 
 	public LoadingPage(Context context) {
 		super(context);
@@ -46,37 +46,37 @@ public abstract class LoadingPage extends FrameLayout {
 	}
 
 	private void init() {
-		loadingView = createLoadingView(); // ´´½¨ÁË¼ÓÔØÖĞµÄ½çÃæ
+		loadingView = createLoadingView(); // åˆ›å»ºäº†åŠ è½½ä¸­çš„ç•Œé¢
 		if (loadingView != null) {
 			this.addView(loadingView, new FrameLayout.LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		}
-		errorView = createErrorView(); // ¼ÓÔØ´íÎó½çÃæ
+		errorView = createErrorView(); // åŠ è½½é”™è¯¯ç•Œé¢
 		if (errorView != null) {
 			this.addView(errorView, new FrameLayout.LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		}
-		emptyView = createEmptyView(); // ¼ÓÔØ¿ÕµÄ½çÃæ
+		emptyView = createEmptyView(); // åŠ è½½ç©ºçš„ç•Œé¢
 		if (emptyView != null) {
 			this.addView(emptyView, new FrameLayout.LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		}
-		showPage();// ¸ù¾İ²»Í¬µÄ×´Ì¬ÏÔÊ¾²»Í¬µÄ½çÃæ
+		showPage();// æ ¹æ®ä¸åŒçš„çŠ¶æ€æ˜¾ç¤ºä¸åŒçš„ç•Œé¢
 	}
 
-	// ¸ù¾İ²»Í¬µÄ×´Ì¬ÏÔÊ¾²»Í¬µÄ½çÃæ
+	// æ ¹æ®ä¸åŒçš„çŠ¶æ€æ˜¾ç¤ºä¸åŒçš„ç•Œé¢
 	private void showPage() {
 		if (loadingView != null) {
 			loadingView.setVisibility(state == STATE_UNKOWN
-					|| state == STATE_LOADING ? View.VISIBLE : View.INVISIBLE);
+											  || state == STATE_LOADING ? View.VISIBLE : View.INVISIBLE);
 		}
 		if (errorView != null) {
 			errorView.setVisibility(state == STATE_ERROR ? View.VISIBLE
-					: View.INVISIBLE);
+											: View.INVISIBLE);
 		}
 		if (emptyView != null) {
 			emptyView.setVisibility(state == STATE_EMPTY ? View.VISIBLE
-					: View.INVISIBLE);
+											: View.INVISIBLE);
 		}
 		if (state == STATE_SUCCESS) {
 			if (successView == null) {
@@ -92,14 +92,14 @@ public abstract class LoadingPage extends FrameLayout {
 		}
 	}
 
-	/* ´´½¨ÁË¿ÕµÄ½çÃæ */
+	/* åˆ›å»ºäº†ç©ºçš„ç•Œé¢ */
 	private View createEmptyView() {
 		View view = View.inflate(UiUtils.getContext(), R.layout.loadpage_empty,
 								 null);
 		return view;
 	}
 
-	/* ´´½¨ÁË´íÎó½çÃæ */
+	/* åˆ›å»ºäº†é”™è¯¯ç•Œé¢ */
 	private View createErrorView() {
 		View view = View.inflate(UiUtils.getContext(), R.layout.loadpage_error,
 								 null);
@@ -111,12 +111,12 @@ public abstract class LoadingPage extends FrameLayout {
 				show();
 			}
 
-			
+
 		});
 		return view;
 	}
 
-	/* ´´½¨¼ÓÔØÖĞµÄ½çÃæ */
+	/* åˆ›å»ºåŠ è½½ä¸­çš„ç•Œé¢ */
 	private View createLoadingView() {
 		View view = View.inflate(UiUtils.getContext(),
 								 R.layout.loadpage_loading, null);
@@ -138,13 +138,13 @@ public abstract class LoadingPage extends FrameLayout {
 
 	}
 
-	// ¸ù¾İ·şÎñÆ÷µÄÊı¾İ ÇĞ»»×´Ì¬
+	// æ ¹æ®æœåŠ¡å™¨çš„æ•°æ® åˆ‡æ¢çŠ¶æ€
 	public void show() {
 		if (state == STATE_ERROR || state == STATE_EMPTY) {
 			state = STATE_LOADING;
 		}
-		// ÇëÇó·şÎñÆ÷ »ñÈ¡·şÎñÆ÷ÉÏÊı¾İ ½øĞĞÅĞ¶Ï
-		// ÇëÇó·şÎñÆ÷ ·µ»ØÒ»¸ö½á¹û
+		// è¯·æ±‚æœåŠ¡å™¨ è·å–æœåŠ¡å™¨ä¸Šæ•°æ® è¿›è¡Œåˆ¤æ–­
+		// è¯·æ±‚æœåŠ¡å™¨ è¿”å›ä¸€ä¸ªç»“æœ
 		ThreadManager.getInstance().createLongPool().execute(new Runnable() {
 
 
@@ -154,32 +154,32 @@ public abstract class LoadingPage extends FrameLayout {
 				final LoadResult result = load();
 				UiUtils.runOnUiThread(new Runnable() {
 
-					
+
 					public void run() {
 						if (result != null) {
 							state = result.getValue();
-							showPage(); // ×´Ì¬¸Ä±äÁË,ÖØĞÂÅĞ¶Ïµ±Ç°Ó¦¸ÃÏÔÊ¾ÄÄ¸ö½çÃæ
+							showPage(); // çŠ¶æ€æ”¹å˜äº†,é‡æ–°åˆ¤æ–­å½“å‰åº”è¯¥æ˜¾ç¤ºå“ªä¸ªç•Œé¢
 						}
 					}
 				});
 			}
 		});
-		
-		
+
+
 		showPage();
 
 	}
 
 	/***
-	 * ´´½¨³É¹¦µÄ½çÃæ
-	 * 
+	 * åˆ›å»ºæˆåŠŸçš„ç•Œé¢
+	 *
 	 * @return
 	 */
 	public abstract View createSuccessView();
 
 	/**
-	 * ÇëÇó·şÎñÆ÷
-	 * 
+	 * è¯·æ±‚æœåŠ¡å™¨
+	 *
 	 * @return
 	 */
 	protected abstract LoadResult load();
