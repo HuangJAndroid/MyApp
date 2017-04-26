@@ -154,7 +154,7 @@
 -keep class com.handmark.pulltorefresh.library.internal.** { *;}
 
 #gson网络请求javabean为null
--keep public class com.meisheng.manmannovel.bean.** { private *; }
+-keep public class com.huangj.myapp.bean.** { private *; }
 
 #org.apache.http.legacy.jar混淆
 -keep class org.apache.**{*;}
@@ -225,6 +225,22 @@
 -keep class com.tencent.mid.**  {* ;}
 
 
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+    **[] $VALUES;
+    public *;
+}
+# nineoldandroids
+-keep interface com.nineoldandroids.view.** { *; }
+-dontwarn com.nineoldandroids.**
+-keep class com.nineoldandroids.** { *; }
+
+# support-design
+-dontwarn android.support.design.**
+-keep class android.support.design.** { *; }
+-keep interface android.support.design.** { *; }
+-keep public class android.support.design.R$* { *; }
 #避免混淆泛型 如果混淆报错建议关掉
 #–keepattributes Signature
 #移除log 测试了下没有用还是建议自己定义一个开关控制是否输出日志
