@@ -22,7 +22,11 @@ public class IrregularityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_irregularity);
         navMap = (NavMapView)findViewById(R.id.nav1);
-        bitmapss = new int[] {R.drawable.imag2,R.drawable.imag3,R.drawable.imag4,R.drawable.imag5,R.drawable.imag6,R.drawable.imag7};
+        bitmapss =new int[] {R.drawable.part_base_frame,R.drawable.part_1_yca,R.drawable.part_2_yca,R.drawable.part_3_yca,R.drawable.part_4_yca,R.drawable.part_5_yca
+                ,R.drawable.part_6_yca,R.drawable.part_7_yca,R.drawable.part_8_yca,R.drawable.part_9_yca,R.drawable.part_10_yca,R.drawable.part_11_yca
+                ,R.drawable.part_13_yca,R.drawable.part_14_yca,R.drawable.part_15_yca,R.drawable.part_16_yca,R.drawable.part_17_yca
+                ,R.drawable.part_18_yca,R.drawable.part_19_yca,R.drawable.part_20_yca,R.drawable.part_21_yca,R.drawable.part_22_yca
+                ,R.drawable.part_12_yca,R.drawable.part_23_yca,R.drawable.part_24_yca,R.drawable.part_25_yca,R.drawable.part_26_yca};
         bitmaps =new int[] {R.drawable.part_base_frame,R.drawable.part_1_yc,R.drawable.part_2_yc,R.drawable.part_3_yc,R.drawable.part_4_yc,R.drawable.part_5_yc
                 ,R.drawable.part_6_yc,R.drawable.part_7_yc,R.drawable.part_8_yc,R.drawable.part_9_yc,R.drawable.part_10_yc,R.drawable.part_11_yc
                 ,R.drawable.part_13_yc,R.drawable.part_14_yc,R.drawable.part_15_yc,R.drawable.part_16_yc,R.drawable.part_17_yc
@@ -50,8 +54,8 @@ public class IrregularityActivity extends AppCompatActivity {
         navMap.setOnClickBitmapListener(new NavMapView.OnClickBitmapListener() {
             @Override
             public void ClickBitmap(int index) {
-//                bitmap[index]=decodeSampledBitmapFromResource(IrregularityActivity.this, bitmapss[index%6]);
-//                navMap.setBitmaps(bitmap);
+                bitmap[index]=decodeSampledBitmapFromResource(IrregularityActivity.this, bitmapss[index]);
+                navMap.setBitmaps(bitmap);
                 Toast.makeText(IrregularityActivity.this, "======"+index, Toast.LENGTH_SHORT).show();
             }
         });
