@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/blue2_dialog_bkg"
     tools:context="com.huangj.myapp.activity.ScratchActivity">
     <com.huangj.myapp.view.ScratchTextView
         android:id="@+id/rubbler"

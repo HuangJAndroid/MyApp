@@ -4,6 +4,8 @@
     android:id="@+id/activity_lately_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:background="#6E3CB4">
     <EditText
         android:hint="度数"
