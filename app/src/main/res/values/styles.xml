@@ -19,6 +19,7 @@
 
     <!--对话框的宽度铺满-->
  <style name="AcitvityDialog" parent="dialog_style_dim_3"></style>
+
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -34,15 +35,16 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.3</item>
     </style>
+
     <style name="dialog_style" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <!-- windowIsFloating属性很重要，true：弹窗（root参数被过滤） false：普通activity -->
         <!--<item name="android:windowIsFloating">false</item>-->
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
     </style>
 

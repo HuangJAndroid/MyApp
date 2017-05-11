@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.huangj.myapp.R;
+import com.huangj.myapp.activity.InputActivity;
 import com.huangj.myapp.activity.IrregularityActivity;
 import com.huangj.myapp.activity.MyPreferenceActivity;
 import com.huangj.myapp.activity.ScratchActivity;
@@ -50,6 +51,8 @@ private Button one_btn3;
     private Button one_btn11;
     @ViewInject(R.id.one_btn12)
     private Button one_btn12;
+    @ViewInject(R.id.one_btn13)
+    private Button one_btn13;
 
     public OneFragment() {
         // Required empty public constructor
@@ -130,6 +133,12 @@ private Button one_btn3;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), IrregularityActivity.class));
+            }
+        });
+        one_btn13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), InputActivity.class));
             }
         });
         return view;

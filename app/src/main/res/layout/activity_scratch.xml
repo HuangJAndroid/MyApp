@@ -14,7 +14,7 @@
         android:layout_width="100dip"
         android:layout_height="50dip"
         android:text="谢谢您"
-        android:textColor="@color/colorMain"
+        android:textColor="#fff"
         android:textSize="18sp"
         android:gravity="center"
     />

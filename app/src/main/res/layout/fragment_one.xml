@@ -92,4 +92,15 @@
         android:layout_alignTop="@+id/one_btn11"
         android:layout_alignLeft="@+id/one_btn2"
         android:layout_alignStart="@+id/one_btn2"/>
+    <Button
+        android:background="@color/lavender"
+        android:text="输入框在键盘上面"
+        android:textSize="15sp"
+        android:textColor="@color/colorMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/one_btn13"
+        android:layout_alignTop="@+id/one_btn12"
+        android:layout_alignLeft="@+id/one_btn3"
+        android:layout_alignStart="@+id/one_btn3"/>
 </RelativeLayout>
