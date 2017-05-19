@@ -103,4 +103,16 @@
         android:layout_alignTop="@+id/one_btn12"
         android:layout_alignLeft="@+id/one_btn3"
         android:layout_alignStart="@+id/one_btn3"/>
+
+    <Button
+        android:layout_marginTop="16dp"
+        android:background="@color/lavender"
+        android:id="@+id/one_btn21"
+        android:layout_below="@id/one_btn11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定位"
+        android:textSize="15sp"
+        android:textColor="@color/colorMain"/>
+
 </RelativeLayout>
