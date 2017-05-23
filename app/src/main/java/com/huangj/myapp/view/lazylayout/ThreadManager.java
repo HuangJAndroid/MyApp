@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * ¹ÜÀíÏß³Ì³Ø
+ * ç®¡ç†çº¿ç¨‹æ± 
  *
  * @author itcast
  *
@@ -23,15 +23,15 @@ public class ThreadManager {
 		return instance;
 	}
 
-	// ÁªÍø±È½ÏºÄÊ±
-	// cpuµÄºËÊı*2+1
+	// è”ç½‘æ¯”è¾ƒè€—æ—¶
+	// cpuçš„æ ¸æ•°*2+1
 	public synchronized ThreadPoolProxy createLongPool() {
 		if (longPool == null) {
 			longPool = new ThreadPoolProxy(5, 5, 5000L);
 		}
 		return longPool;
 	}
-	// ²Ù×÷±¾µØÎÄ¼ş
+	// æ“ä½œæœ¬åœ°æ–‡ä»¶
 	public synchronized ThreadPoolProxy createShortPool() {
 		if(shortPool==null){
 			shortPool = new ThreadPoolProxy(3, 3, 5000L);
@@ -52,29 +52,29 @@ public class ThreadManager {
 
 		}
 		/**
-		 * Ö´ĞĞÈÎÎñ
+		 * Ö´æ‰§è¡Œä»»åŠ¡
 		 * @param runnable
 		 */
 		public void execute(Runnable runnable) {
 			if (pool == null) {
-				// ´´½¨Ïß³Ì³Ø
+				// åˆ›å»ºçº¿ç¨‹æ± 
 				/*
-				 * 1. Ïß³Ì³ØÀïÃæ¹ÜÀí¶àÉÙ¸öÏß³Ì2. Èç¹ûÅÅ¶ÓÂúÁË, ¶îÍâµÄ¿ªµÄÏß³ÌÊı3. Èç¹ûÏß³Ì³ØÃ»ÓĞÒªÖ´ĞĞµÄÈÎÎñ ´æ»î¶à¾Ã4.
-				 * Ê±¼äµÄµ¥Î» 5 Èç¹û Ïß³Ì³ØÀï¹ÜÀíµÄÏß³Ì¶¼ÒÑ¾­ÓÃÁË,Ê£ÏÂµÄÈÎÎñ ÁÙÊ±´æµ½LinkedBlockingQueue¶ÔÏóÖĞ ÅÅ¶Ó
+				 * 1. çº¿ç¨‹æ± é‡Œé¢ç®¡ç†å¤šå°‘ä¸ªçº¿ç¨‹2. å¦‚æœæ’é˜Ÿæ»¡äº†, é¢å¤–çš„å¼€çš„çº¿ç¨‹æ•°3. å¦‚æœçº¿ç¨‹æ± æ²¡æœ‰è¦æ‰§è¡Œçš„ä»»åŠ¡ å­˜æ´»å¤šä¹…4.
+				 * æ—¶é—´çš„å•ä½ 5 å¦‚æœ çº¿ç¨‹æ± é‡Œç®¡ç†çš„çº¿ç¨‹éƒ½å·²ç»ç”¨äº†,å‰©ä¸‹çš„ä»»åŠ¡ ä¸´æ—¶å­˜åˆ°LinkedBlockingQueueå¯¹è±¡ä¸­ æ’é˜Ÿ
 				 */
 				pool = new ThreadPoolExecutor(corePoolSize, maximumPoolSize,
 											  time, TimeUnit.MILLISECONDS,
 											  new LinkedBlockingQueue<Runnable>(10));
 			}
-			pool.execute(runnable); // µ÷ÓÃÏß³Ì³Ø Ö´ĞĞÒì²½ÈÎÎñ
+			pool.execute(runnable); // è°ƒç”¨çº¿ç¨‹æ±  æ‰§è¡Œå¼‚æ­¥ä»»åŠ¡
 		}
 		/**
-		 * È¡ÏûÈÎÎñ
+		 * å–æ¶ˆä»»åŠ¡
 		 * @param runnable
 		 */
 		public void cancel(Runnable runnable) {
 			if (pool != null && !pool.isShutdown() && !pool.isTerminated()) {
-				pool.remove(runnable); // È¡ÏûÒì²½ÈÎÎñ
+				pool.remove(runnable); // å–æ¶ˆå¼‚æ­¥ä»»åŠ¡
 			}
 		}
 	}

@@ -6,9 +6,9 @@ import android.view.ViewParent;
 
 public class ViewUtils {
 	public static void removeParent(View v){
-		//  ÏÈÕÒµ½µù ÔÚÍ¨¹ıµùÈ¥ÒÆ³ıº¢×Ó
+		//  å…ˆæ‰¾åˆ°çˆ¹ åœ¨é€šè¿‡çˆ¹å»ç§»é™¤å­©å­
 		ViewParent parent = v.getParent();
-		//ËùÓĞµÄ¿Ø¼ş ¶¼ÓĞµù  µùÒ»°ãÇé¿öÏÂ ¾ÍÊÇViewGoup
+		//æ‰€æœ‰çš„æ§ä»¶ éƒ½æœ‰çˆ¹  çˆ¹ä¸€èˆ¬æƒ…å†µä¸‹ å°±æ˜¯ViewGoup
 		if(parent instanceof ViewGroup){
 			ViewGroup group=(ViewGroup) parent;
 			group.removeView(v);
