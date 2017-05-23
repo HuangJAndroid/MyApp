@@ -72,27 +72,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void hideFragment(FragmentTransaction transaction){
-        if (homeFragment!=null){
+    public void hideFragment(FragmentTransaction transaction) {
+        if (homeFragment != null) {
             transaction.hide(homeFragment);
         }
-        if (oneFragment!=null){
+        if (oneFragment != null) {
             transaction.hide(oneFragment);
         }
-        if (twoFragment!=null){
+        if (twoFragment != null) {
             transaction.hide(twoFragment);
         }
-        if (threeFragment!=null){
+        if (threeFragment != null) {
             transaction.hide(threeFragment);
         }
     }
-
-    @Override
-    public void onAttachedToWindow() {
-        // TODO Auto-generated method stub
-
-        super.onAttachedToWindow();
-        }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
