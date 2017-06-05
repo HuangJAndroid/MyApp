@@ -111,7 +111,7 @@
         android:layout_below="@id/one_btn11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="定位"
+        android:text="水波纹seekbar"
         android:textSize="15sp"
         android:textColor="@color/colorMain"/>
 

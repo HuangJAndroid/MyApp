@@ -69,12 +69,14 @@
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}"/>
 
-        <activity android:name=".activity.LocationActivity">
+        <activity android:name=".activity.WaterActivity">
         </activity>
 
 
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="04e678645ced52ce3912d75bdc5f775b">
+        <meta-data android:name="com.amap.api.v2.apikey"
+                   android:value="04e678645ced52ce3912d75bdc5f775b">
         </meta-data>
+
         <service android:name="com.amap.api.location.APSService"></service>
     </application>
 
