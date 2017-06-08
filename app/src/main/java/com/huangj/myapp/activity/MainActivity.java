@@ -1,9 +1,13 @@
 package com.huangj.myapp.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -27,6 +31,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 88;
     private DrawerLayout mDrawerLayout;
     private TextView main_tv_login,main_tv_login2;
     private SlidingMenu mSlidingMenu;
@@ -44,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
+        if (ContextCompat.checkSelfPermission(this,
+                                              Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                                              new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                              MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+        }else {
+            //已申请了权限
+        }
 
         LoadingPage loadingPage = new LoadingPage(this) {
             @Override
@@ -58,19 +73,25 @@ public class MainActivity extends AppCompatActivity {
         };
         loadingPage.show();
         setContentView(loadingPage);
-
-
-        //不让状态栏被占用
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //不让虚拟键遮盖布局
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        //状态栏颜色设置
-//        StatusBarCompat.compat(MainActivity.this, getResources().getColor(R.color.colorMain));
-
-
-
-
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
+
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        //允许申请了权限
+                } else {
+                    Toast.makeText(this,"无法读取图片",Toast.LENGTH_LONG).show();
+                }
+
+                break;
+        }
+
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
 
     public void hideFragment(FragmentTransaction transaction) {
         if (homeFragment != null) {
