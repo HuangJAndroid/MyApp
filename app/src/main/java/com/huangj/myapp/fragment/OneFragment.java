@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.huangj.myapp.R;
+import com.huangj.myapp.activity.CircleLockActivity;
 import com.huangj.myapp.activity.InputActivity;
 import com.huangj.myapp.activity.IrregularityActivity;
 import com.huangj.myapp.activity.WaterActivity;
@@ -56,6 +57,8 @@ private Button one_btn3;
     private Button one_btn13;
     @ViewInject(R.id.one_btn21)
     private Button one_btn21;
+    @ViewInject(R.id.one_btn22)
+    private Button one_btn22;
 
     public OneFragment() {
         // Required empty public constructor
@@ -148,6 +151,12 @@ private Button one_btn3;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), WaterActivity.class));
+            }
+        });
+        one_btn22.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), CircleLockActivity.class));
             }
         });
         return view;
