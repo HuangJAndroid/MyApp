@@ -1,10 +1,12 @@
 package com.huangj.myapp.fragment;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,8 @@ import org.xutils.x;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_CANCELED;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -45,28 +49,6 @@ public class OneFragment extends Fragment {
     FlowTagLayout flowTagLayout;
     @ViewInject(R.id.one_iv)
     private ImageView one_iv;
-//    @ViewInject(R.id.one_btn)
-//    private Button one_btn;
-//    @ViewInject(R.id.one_btn1)
-//    private Button one_btn1;
-//    @ViewInject(R.id.one_btn01)
-//    private Button  one_btn01;
-//    @ViewInject(R.id.one_btn02)
-//    private Button one_btn02;
-//    @ViewInject(R.id.one_btn2)
-//    private Button one_btn2;
-//@ViewInject(R.id.one_btn3)
-//private Button one_btn3;
-//    @ViewInject(R.id.one_btn11)
-//    private Button one_btn11;
-//    @ViewInject(R.id.one_btn12)
-//    private Button one_btn12;
-//    @ViewInject(R.id.one_btn13)
-//    private Button one_btn13;
-//    @ViewInject(R.id.one_btn21)
-//    private Button one_btn21;
-//    @ViewInject(R.id.one_btn22)
-//    private Button one_btn22;
 
     public OneFragment() {
         // Required empty public constructor
@@ -74,7 +56,7 @@ public class OneFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_one, container, false);
@@ -134,7 +116,28 @@ public class OneFragment extends Fragment {
              }
             }
         });
+
+        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),InputActivity.class);
+                intent.putExtra("str","String");
+                startActivityForResult(intent, Activity.RESULT_FIRST_USER);
+            }
+        });
         return view;
     }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Activity.RESULT_FIRST_USER) {
+
+            if (resultCode == RESULT_CANCELED) {
+                Bundle bundle = data.getExtras();
+                Log.e("======OneOnactivity",bundle.getString("str"));
+            }
+        }
+    }
 }
