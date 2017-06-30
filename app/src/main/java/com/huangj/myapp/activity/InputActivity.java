@@ -21,7 +21,9 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
 
         ((LockableScrollView)findViewById(R.id.scrollview)).setScrollingEnabled(false);
-        Log.e("======Input",getIntent().getStringExtra("str"));
+        if (getIntent().getStringExtra("str")!=null) {
+            Log.e("======Input", getIntent().getStringExtra("str"));
+        }
 
         findViewById(R.id.input_textview).setOnClickListener(new View.OnClickListener() {
             @Override

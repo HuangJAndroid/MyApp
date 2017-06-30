@@ -28,7 +28,7 @@ public class SlidingActivity extends AppCompatActivity {
         //数值越大侧滑布局宽度越小
 //        mSlideSideMenu.setContentPeekDistancePercent(0.8f);
         //数值越小内容布局比例越小
-//        mSlideSideMenu.setContentPeekSizePercent(0.4f);
+//        mSlideSideMenu.setContentPeekSizePercent(0.8f);
         //侧滑动画的效果
 //        mSlideSideMenu.setMenuSizePercent(1.9f);
         //关闭侧滑的时间
@@ -39,7 +39,7 @@ public class SlidingActivity extends AppCompatActivity {
         mToolbar.setTitleTextColor(Color.WHITE);
 
         // Wire SideMenu with Toolbar
-        mToolbar.setNavigationIcon(R.drawable.ic_menu);
+        mToolbar.setNavigationIcon(R.mipmap.ic_menu);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
