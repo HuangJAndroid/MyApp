@@ -1,12 +1,10 @@
 package com.huangj.myapp.fragment;
 
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +18,7 @@ import com.huangj.myapp.R;
 import com.huangj.myapp.activity.CircleLockActivity;
 import com.huangj.myapp.activity.InputActivity;
 import com.huangj.myapp.activity.IrregularityActivity;
+import com.huangj.myapp.activity.ItemSelectActivity;
 import com.huangj.myapp.activity.MyPreferenceActivity;
 import com.huangj.myapp.activity.ScratchActivity;
 import com.huangj.myapp.activity.SlidingActivity;
@@ -36,8 +35,6 @@ import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.app.Activity.RESULT_CANCELED;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,7 +61,7 @@ public class OneFragment extends Fragment {
 
         final Class[] activityClass = new Class[]{ MyPreferenceActivity.class, WebViewActivity.class,ZhuanPanActivity.class,
                 SlidingActivity.class, ScratchActivity.class, StellarMapActivity.class,IrregularityActivity.class,
-                InputActivity.class, WaterActivity.class, CircleLockActivity.class};
+                InputActivity.class, WaterActivity.class, CircleLockActivity.class, ItemSelectActivity.class};
 
 
         Glide.with(this).load("http://upload.17u.net/uploadpicbase/2012/02/13/ad/2012021316452454712.jpg").centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(one_iv);
@@ -82,6 +79,7 @@ public class OneFragment extends Fragment {
         str.add("输入框在键盘上面");
         str.add("水波纹seekbar");
         str.add("解锁");
+        str.add("item选择器");
 
         TagAdapter<String> tagAdapter = new TagAdapter<>(getActivity());
         flowTagLayout.setAdapter(tagAdapter);
@@ -117,27 +115,6 @@ public class OneFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),InputActivity.class);
-                intent.putExtra("str","String");
-                startActivityForResult(intent, Activity.RESULT_FIRST_USER);
-            }
-        });
         return view;
-    }
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Activity.RESULT_FIRST_USER) {
-
-            if (resultCode == RESULT_CANCELED) {
-                Bundle bundle = data.getExtras();
-                Log.e("======OneOnactivity",bundle.getString("str"));
-            }
-        }
     }
 }

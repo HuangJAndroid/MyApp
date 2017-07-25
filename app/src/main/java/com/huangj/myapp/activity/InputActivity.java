@@ -3,7 +3,6 @@ package com.huangj.myapp.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -21,19 +20,7 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
 
         ((LockableScrollView)findViewById(R.id.scrollview)).setScrollingEnabled(false);
-        if (getIntent().getStringExtra("str")!=null) {
-            Log.e("======Input", getIntent().getStringExtra("str"));
-        }
 
-        findViewById(R.id.input_textview).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("str","inputactivity");
-                setResult(RESULT_CANCELED, InputActivity.this.getIntent().putExtras(bundle));
-                InputActivity.this.finish();
-            }
-        });
     }
 
     @Override

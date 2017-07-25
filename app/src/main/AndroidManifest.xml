@@ -79,6 +79,8 @@
 
         <activity android:name=".activity.CircleLockActivity">
         </activity>
+        <activity android:name=".activity.ItemSelectActivity">
+        </activity>
     </application>
 
 </manifest>
