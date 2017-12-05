@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.huangj.myapp.R;
+import com.huangj.myapp.utils.ShortCutUtils;
 import com.huangj.myapp.view.WaveLoadingView;
 import com.larswerkman.lobsterpicker.OnColorListener;
 import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
@@ -25,10 +26,10 @@ public class WaterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water);
-
+        ShortCutUtils.addShortcut(this, "00000");
         mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
         // Sets the length of the animation, default is 1000.
-        mWaveLoadingView.setAnimDuration(3000);
+//        mWaveLoadingView.setAnimDuration(3000);
         // Shape Type
         findViewById(R.id.tv_shape).setOnClickListener(new View.OnClickListener() {
             @Override

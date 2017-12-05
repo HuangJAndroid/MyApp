@@ -2,6 +2,7 @@ package com.huangj.myapp.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +24,9 @@ import com.huangj.myapp.fragment.HomeFragment;
 import com.huangj.myapp.fragment.OneFragment;
 import com.huangj.myapp.fragment.ThreeFragment;
 import com.huangj.myapp.fragment.TwoFragment;
+import com.huangj.myapp.receive.HomeKeyEventBroadCastReceiver;
+import com.huangj.myapp.utils.ShortCutUtils;
+import com.huangj.myapp.utils.StatusBarUtils;
 import com.huangj.myapp.view.lazylayout.LoadingPage;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBarUtils.StatusBarLightMode(this);
 //        setContentView(R.layout.activity_main);
         if (ContextCompat.checkSelfPermission(this,
                                               Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -73,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
         };
         loadingPage.show();
         setContentView(loadingPage);
+
+//        HomeKey和长按或任务键
+        registerReceiver(new HomeKeyEventBroadCastReceiver(), new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+
+        ShortCutUtils.addShortcut(this, "百度");
+    }
+
+
+    public LoadingPage.LoadResult load(){
+        for (int i = 0; i < 4; i++) {
+            data.add(""+i+i);
+        }
+        if(data.size() == 0){
+            return LoadingPage.LoadResult.error;
+        }else{
+            return LoadingPage.LoadResult.success;
+        }
     }
 
     @Override
@@ -212,15 +234,4 @@ public class MainActivity extends AppCompatActivity {
         return view;
     }
 
-
-    public LoadingPage.LoadResult load(){
-        for (int i = 0; i < 4; i++) {
-            data.add(""+i+i);
-        }
-        if(data.size() == 0){
-            return LoadingPage.LoadResult.error;
-        }else{
-            return LoadingPage.LoadResult.success;
-        }
-    }
 }
